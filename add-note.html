@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Notizen - CAS FEE Projekt 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        
+        <!-- Header --> 
+        <header class="header" role="banner">
+            <h1>Neue Notiz</h1>
+        </header>
+
+        <div class="content">
+            <main class="main" role="main">
+                <div class="form">
+                    <div>
+                        <label for="title">Titel</label>
+                        <input type="text" name="title" id="title" placeholder="Notiz eingeben" value="">
+                    </div>
+
+                    <div>
+                        <label for="description">Beschreibung</label>
+                        <textarea cols="40" rows="8" name="description" id="description" placeholder="Beschreibung…"></textarea>
+                    </div>
+
+                    <div class="two-col">
+                        <div>
+                            <label for="importance">Wichtigkeit</label>
+                            <select name="importance" id="importance">
+                                <option value="importance-1">Wichtigkeit 1</option>
+                                <option value="importance-2">Wichtigkeit 2</option>
+                                <option value="importance-3">Wichtigkeit 3</option>
+                                <option value="importance-4">Wichtigkeit 4</option>
+                                <option value="importance-5">Wichtigkeit 5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="due-date">Erledigt bis</label>
+                            <input type="date" name="due-date" id="due-date" value="">
+                        </div>
+                    </div>
+
+                    <!-- Hidden Values -->
+                    <div>
+                        <!--<input type="hidden" name="id" id="id" value="### timestamp here ###">-->
+                        <input type="hidden" name="status" id="status" value="todo">
+                    </div>
+
+                    <div>
+                        <button class="submit" onclick="send()">Hinzufügen</button>
+                        <a href="index.html" class="cancel">Abbrechen</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/plugins/jquery-1.12.0.min.js"><\/script>')</script>
+
+        <script src="js/add-note.js"></script>
+
+    </body>
+</html>

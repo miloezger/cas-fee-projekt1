@@ -1,0 +1,7 @@
+# Project-specific ignores
+
+.DS_Store
+
+
+
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
