@@ -1,8 +1,6 @@
-/*  
---------------------------
-Prefill Date Field
---------------------------
-*/
+
+
+// Pre-fill Date Field
 document.getElementById('due-date').valueAsDate = new Date();
 
 
@@ -22,12 +20,12 @@ function send() {
         var id = new Date().getTime();
 
         var item = {
-            'id': id,
-            'title': document.getElementById("title").value,
-            'description': document.getElementById("description").value,
-            'importance': document.getElementById("importance").value,
-            'dueDate': document.getElementById("due-date").value,
-            'status': document.getElementById("status").value
+            id: id,
+            title: document.getElementById("title").value,
+            description: document.getElementById("description").value,
+            importance: parseInt(document.getElementById("importance").value),
+            dueDate: document.getElementById("due-date").value,
+            completed: false
         };
 
         data.todos.push(item);
@@ -39,18 +37,4 @@ function send() {
 
     }
 
-};
-
-
-
-
-
-
-
-
-// HTML5 Boilerplate
-(function() {
-
-
-
-}());
+}
