@@ -275,6 +275,11 @@ a.add-note:hover,
     text-decoration: none;
 }
 
+.sort-label {
+    font-size: 18px;
+    font-weight: 500;
+}
+
 .sort-label,
 .sort-options {
     display: inline-block;
@@ -290,6 +295,71 @@ a.add-note:hover,
 
 .sort-options ul li a.active {
 }
+
+
+/* Select */
+
+.filter-bar select {
+    border: 1px solid var(--mainColorLight);
+    height: 40px;
+    font-size: 18px;
+    line-height: 0.8em;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    background: transparent none no-repeat;
+    cursor: pointer;
+    color: var(--mainColor);
+    border-radius: 4px;
+    width: 180px;
+}
+
+@media screen and (min-width:0) {
+    .filter-bar select {
+        background-image: url("../img/triangle.svg");
+
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* for Webkit */
+    .filter-bar select {
+        -webkit-appearance: none;
+        background-position: 158px center;
+        padding: 5px 25px 5px 10px;
+    }
+}
+
+@-moz-document url-prefix() {
+    /* for Firefox */
+    .filter-bar select {
+        -moz-appearance: none;
+        text-indent: 0.01px;
+        text-overflow: "";
+        background-position: right center;
+        /*controls width of main area*/
+        padding-right: 171px;
+    }
+
+    /* hides the dotted outline on focus in FF (See SO#3773430) */
+    .filter-bar select:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    /* for IE10+ */
+    .filter-bar select::-ms-expand {
+        display: none;
+    }
+    .filter-bar select {
+        background-position: right center;
+        /*controls width?*/
+        padding-right: 170px;
+    }
+}
+
 
 
 /*  --------------------

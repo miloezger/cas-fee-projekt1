@@ -1,10 +1,11 @@
+'use strict';
+
 
 /*
 --------------------------
-Edit
+Edit Form
 --------------------------
 */
-
 
 // Get the local storage
 function get_todos() {
@@ -12,7 +13,6 @@ function get_todos() {
     todos = JSON.parse(todos);
     return todos;
 }
-
 
 // Fill out the form
 if(window.location.hash) {
@@ -37,6 +37,7 @@ if(window.location.hash) {
     }
 
 }
+
 
 
 

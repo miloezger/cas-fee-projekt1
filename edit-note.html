@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -7,15 +7,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        
-        <!-- Header --> 
         <header class="header" role="banner">
             <h1>Notiz bearbeiten</h1>
         </header>
-
         <div class="content">
             <main class="main" role="main">
                 <div class="form">
@@ -28,7 +27,6 @@
                         <label for="description">Beschreibung</label>
                         <textarea cols="40" rows="8" name="description" id="description" placeholder="Beschreibung…"></textarea>
                     </div>
-
                     <div class="two-col">
                         <div>
                             <label for="importance">Wichtigkeit</label>
@@ -45,13 +43,6 @@
                             <input type="date" name="due-date" id="due-date" value="">
                         </div>
                     </div>
-
-                    <!-- Hidden Values -->
-                    <div>
-                        <!--<input type="hidden" name="id" id="id" value="### timestamp here ###">-->
-                        <!-- <input type="hidden" name="status" id="status" value="true"> -->
-                    </div>
-
                     <div>
                         <button class="submit" onclick="update()">Speichern</button>
                         <a href="index.html" class="cancel">Abbrechen</a>
@@ -61,6 +52,5 @@
         </div>
 
         <script src="js/edit.js"></script>
-
     </body>
 </html>

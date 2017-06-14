@@ -1,22 +1,13 @@
 'use strict';
 
 
+
 /*
 --------------------------
-For Testing
+Get Data from LocalStorage
 --------------------------
 */
-function reset() {
-    localStorage.clear();
-}
 
-
-
-/*
- --------------------------
- Get Data from LocalStorage
- --------------------------
- */
 function get_todos() {
 
     var todos = localStorage.getItem("todos");
@@ -36,25 +27,21 @@ showResults();
 
 
 
-
-
-
 /*
 --------------------------
 Show all Results
 --------------------------
 */
+
 function showResults() {
 
     var data = get_todos();
-    // console.log(data);
 
-    // Check Sort
+    // Check Sort Value
     var sortSelect = document.getElementById("sort-selection");
     var sortValue = sortSelect.options[sortSelect.selectedIndex].value;
-    // console.log(sortValue);
 
-    // Sort by Importance
+    // Sort
     data.todos.sort(function(a, b) {
 
         if (sortValue === 'importance') {
@@ -65,23 +52,22 @@ function showResults() {
 
     });
 
-
     // Remove Filter Bar when empty
     if(data.todos.length === 0) {
-    	
+
     	var sortBarContainer = document.getElementsByClassName('content')[0];
     	var sortBarDomElement = sortBarContainer.querySelector('.filter-bar');
     	sortBarContainer.removeChild(sortBarDomElement);
-    	
+
     }
 
-    // Moments.js Datum Formatierung
+    // Moments.js Date Format
     moment.locale('de');
     var DateFormats = {
     	short: "dddd, ll"
-	}
+	};
 
-    // Datum Formatierung helper
+    // Date Format Helper
     Handlebars.registerHelper ("formatDate", function(datetime, format) {
         if (moment) {
             format = DateFormats[format] || format;
@@ -92,30 +78,21 @@ function showResults() {
         }
     });
 
-    // Handelbars
-	var source = $("#todo-template").html(); 
-	var template = Handlebars.compile(source);
-	$('#todo').html(template(data));
+    // Handelbars Tasks
+    var source = document.getElementById("todo-template").innerHTML;
+    var template = Handlebars.compile(source);
+    document.getElementById("todo").innerHTML = template(data);
 
-    var sourceCompleted = $("#completed-template").html();
+    // Handelbars Completed Tasks
+    var sourceCompleted = document.getElementById("completed-template").innerHTML;
     var templateCompleted = Handlebars.compile(sourceCompleted);
-    $('#completed').html(templateCompleted(data));
+    document.getElementById("completed").innerHTML = templateCompleted(data);
 
-	//console.log(data);
-
+    // Add EventListener
+    registerCompleteButton();
+    registerDeleteButton();
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -137,13 +114,16 @@ function completeItem(id) {
         var obj = data.todos[i];
         var objId = obj.id;
 
-        if (objId == id) {
+        if ( parseInt(objId) === parseInt(id) ) {
         	
         	if (!obj.completed) {
         		obj.completed = true;
         	} else {
         		obj.completed = false;
         	}
+
+            // TODO: write date log to completed items
+        	console.log(new Date());
 
             break;
         }
@@ -154,19 +134,23 @@ function completeItem(id) {
     showResults();
 }
 
-
-
 // Complete Button
-var statusButtons = document.getElementsByClassName('status-button');
-for(var i = 0; i < statusButtons.length; i++) {
-	
-	statusButtons.item(i).addEventListener('click', function(e){
-		//console.log('edit');
-		var parent = this.parentNode; 
-		var parentId = parent.id;
-		completeItem(parentId);
-	});
+function registerCompleteButton() {
+
+    var statusButtons = document.getElementsByClassName('status-button');
+    for(var i = 0; i < statusButtons.length; i++) {
+
+        statusButtons.item(i).addEventListener('click', function(e){
+            var parent = this.parentNode;
+            var parentId = parent.id;
+            completeItem(parentId);
+        });
+    }
+
 }
+
+
+
 
 
 /*
@@ -175,7 +159,7 @@ Delete item
 --------------------------
 */
 
-function deleteItem (id) {
+function deleteItem(id) {
 
 	var data = get_todos();
 	var id = id;
@@ -185,7 +169,7 @@ function deleteItem (id) {
         var obj = data.todos[i];
         var objId = obj.id;
 
-        if (objId == id) {
+        if (parseInt(objId) === parseInt(id)) {
 
             data.todos.splice(i, 1);
 
@@ -198,15 +182,19 @@ function deleteItem (id) {
 }
 
 
-
 // Delete Button
-var deleteButton = document.getElementsByClassName('delete');
-for(var i = 0; i < deleteButton.length; i++) {
+function registerDeleteButton() {
 
-    deleteButton.item(i).addEventListener('click', function(e){
-    	deleteItem(this.parentNode.parentNode.id);
-    });
+    var deleteButton = document.getElementsByClassName('delete');
+    for (var i = 0; i < deleteButton.length; i++) {
+
+        deleteButton.item(i).addEventListener('click', function(e) {
+            deleteItem(this.parentNode.parentNode.id);
+        });
+    }
+
 }
+
 
 
 
@@ -225,14 +213,19 @@ function switchTabContent(e, navigation, content) {
 	// dont show # in url
 	e.preventDefault();
 
-	// update active state tab navigation
-	navigation.querySelector('a.active').classList.remove('active');
-	e.target.classList.add('active');
+    if( !e.target.classList.contains('active') ) {
 
-	// update the content
-	content.querySelector('div.selected').classList.remove('selected');
-	content.querySelector(queryVal).classList.add('selected');
+        // update active state tab navigation
+        navigation.querySelector('a.active').classList.remove('active');
+        e.target.classList.add('active');
+
+        // update the content
+        content.querySelector('div.selected').classList.remove('selected');
+        content.querySelector(queryVal).classList.add('selected');
+    }
+
 }
+
 
 // Tab Navigation
 var mainContentWrapper = document.getElementsByClassName('content')[0];

@@ -1,7 +1,17 @@
+'use strict';
 
+
+/*
+ --------------------------
+ Form Date Field
+ --------------------------
+ */
 
 // Pre-fill Date Field
 document.getElementById('due-date').valueAsDate = new Date();
+
+
+
 
 
 /*  
@@ -12,7 +22,7 @@ Send new Todos to index.html
 function send() {
 
     var title = document.getElementById("title").value;
-    if(title == null || title == '') {
+    if(title === null || title === '') {
         alert('Bitte einen Titel eintragen.');
     } else {
 
