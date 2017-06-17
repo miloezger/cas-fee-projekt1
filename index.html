@@ -51,7 +51,7 @@
                 
                 <div id="todo" class="tab-section selected"></div>
                 <!-- Render Todos -->
-                <script id="todo-template" type="text/x-handlebars-template">
+                <template id="todo-template">
                     {{#each todos}}
 
                     {{#unless completed}}
@@ -68,7 +68,7 @@
                             <div class="summary">
                                 <h3>{{title}}</h3>
                             </div>
-                            <div class="description" style="display: ;">
+                            <div class="description" style="display: none;">
                                 <p>{{description}}</p>
                                 <p>{{importance}}</p>
                             </div>
@@ -91,11 +91,11 @@
                     {{else}}
                     <p class="emptylist">Keine Eintr&auml;ge gefunden</p>
                     {{/each}}
-                </script>
+                </template>
 
                 <div id="completed" class="tab-section"></div>
                 <!-- Render Todos marked as Completed -->
-                <script id="completed-template" type="text/x-handlebars-template">
+                <template id="completed-template">
                     {{#each todos}}
 
                     {{#if completed}}
@@ -130,7 +130,7 @@
                     {{else}}
                     <p class="emptylist">Keine Eintr&auml;ge gefunden</p>
                     {{/each}}
-                </script>
+                </template>
 
             </main>
         </div>
