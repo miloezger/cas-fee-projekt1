@@ -1,74 +1,35 @@
-'use strict';
+"use strict";
 
+(function() {
 
-/*
---------------------------
-Edit Form
---------------------------
-*/
+    // Helper
+    let currentId = window.location.hash.substr(1);
+    let titleField = document.getElementById("title");
+    let descriptionField = document.getElementById("description");
+    let importanceField = document.getElementById("importance");
+    let dueDateField = document.getElementById("due-date");
+    let obj = todoList.getTodoById(currentId);
 
-// Get the local storage
-function get_todos() {
-    var todos = localStorage.getItem("todos");
-    todos = JSON.parse(todos);
-    return todos;
-}
+    prefillForm();
 
-// Fill out the form
-if(window.location.hash) {
+    // Send Form
+    document.getElementById("update").addEventListener('click', function(e) {
+        updateNote();
+    });
 
-    var data = get_todos();
-    var editId = window.location.hash.substr(1);
-    // console.log(editId);
-
-    for (var i = 0; i < data.todos.length; i++){
-
-        var obj = data.todos[i];
-
-        if ( parseInt(obj.id) === parseInt(editId) ) {
-
-            // Pre-fill Fields
-            document.getElementById("title").value = obj.title;
-            document.getElementById("description").value = obj.description;
-            document.getElementById("importance").value = obj.importance;
-            document.getElementById("due-date").value = obj.dueDate;
-
-        }
+    // Pre Fill Form
+    function prefillForm() {
+        titleField.value = obj.title;
+        descriptionField.value = obj.description;
+        importanceField.value = obj.importance;
+        dueDateField.value = obj.dueDate;
     }
 
-}
-
-
-
-
-
-/*
- --------------------------
- Update Entry
- --------------------------
- */
-function update() {
-
-    var data = get_todos();
-    var editId = window.location.hash.substr(1);
-
-    for (var i = 0; i < data.todos.length; i++){
-
-        var obj = data.todos[i];
-
-        if ( parseInt(obj.id) === parseInt(editId) ) {
-
-            obj.title = document.getElementById("title").value;
-            obj.description = document.getElementById("description").value;
-            obj.importance = document.getElementById("importance").value;
-            obj.dueDate = document.getElementById("due-date").value;
-
-            break;
-
-        }
+    // Update Entry
+    function updateNote() {
+        todoList.updateTodo(currentId, titleField.value, descriptionField.value, importanceField.value, dueDateField.value, obj.isCompleted);
+        window.location.replace("index.html");
     }
 
-    localStorage.setItem('todos', JSON.stringify(data));
-    window.location.replace("index.html");
 
-}
+})();
