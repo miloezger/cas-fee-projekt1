@@ -9,34 +9,33 @@
     // Sort
     let sortSelect = document.getElementById("sort-selection");
     sortSelect.addEventListener('change', function(e) {
-        console.log(this.value);
 
         renderTodoList(this.value);
+
     });
 
 
     // Render List Function
-    function renderTodoList() {
+    function renderTodoList(sortBy) {
 
-        let data = todoList.getAllTodos();
+        console.log(sortBy);
+        let data = todoList.getAllTodos(sortBy);
 
-        // todoTemplate.renderToTemplate(template, data);
-        // Handelbars Tasks
+        // Handelbars All Tasks
         let source = document.getElementById("todo-template").innerHTML;
         let template = Handlebars.compile(source);
         document.getElementById("todo").innerHTML = template(data);
-
         // Handelbars Completed Tasks
         let sourceCompleted = document.getElementById("completed-template").innerHTML;
         let templateCompleted = Handlebars.compile(sourceCompleted);
         document.getElementById("completed").innerHTML = templateCompleted(data);
 
-        console.log(data);
-
+        // console.log(data);
         // Register Buttons
         registerCompleteButton();
         registerDeleteButton();
     }
+
 
 
     // Delete Button
@@ -90,4 +89,4 @@
     }
 
 
-})();
+}());
