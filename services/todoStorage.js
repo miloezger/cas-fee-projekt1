@@ -28,9 +28,9 @@ function publicAddNewTodo(title, description, importance, dueDate, callback) {
 
 
 // Update
-function publicUpdateTodo(id, title, description, importance, dueDate, callback) {
+function publicUpdateTodo(id, title, description, importance, dueDate, isCompleted, callback) {
 
-    db.update({ _id: id}, {$set: {"title": title, "description": description, "importance": importance, "dueDate": dueDate}}, {}, function (err, count) {
+    db.update({ _id: id}, {$set: { title: title, description: description, importance: importance, dueDate: dueDate, isCompleted: isCompleted}}, {}, function (err, count) {
         publicGetTodoById(id, callback);
     });
 }

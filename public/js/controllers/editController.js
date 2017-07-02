@@ -9,10 +9,11 @@
     let descriptionField = document.getElementById("description");
     let importanceField = document.getElementById("importance");
     let dueDateField = document.getElementById("due-date");
+    let statusField = document.getElementById("status");
 
     rest.getTodo(currentId).done(function(todo) {
 
-        console.log(todo.title);
+        console.log(todo.isCompleted);
         console.log(currentId);
 
         // Prefill Form
@@ -20,6 +21,7 @@
         descriptionField.value = todo.description;
         importanceField.value = todo.importance;
         dueDateField.value = todo.dueDate;
+        statusField.value = todo.isCompleted;
 
     });
 
@@ -41,8 +43,9 @@
             let description = document.getElementById("description").value;
             let importance = document.getElementById("importance").value;
             let dueDate = document.getElementById("due-date").value;
+            let isCompleted = document.getElementById("status").value;
 
-            rest.updateTodo(currentId, title, description, importance, dueDate);
+            rest.updateTodo(currentId, title, description, importance, dueDate, isCompleted);
             window.location.replace("index.html");
         }
     }
