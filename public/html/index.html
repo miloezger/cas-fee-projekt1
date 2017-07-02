@@ -7,12 +7,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="icon" type="image/png" href="../favicon.png">
 
-        <script src="js/plugins/handlebars-v4.0.10.js"></script>
-        <script src="js/plugins/moment-with-locales.min.js"></script>
-
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="../css/main.css">
 
     </head>
     <body>
@@ -57,11 +54,11 @@
                 <div id="todo" class="tab-section selected"></div>
                 <!-- Render Todos -->
                 <template id="todo-template">
-                    {{#each this}}
+                    {{#each todos}}
 
                     {{#unless isCompleted}}
                     <h2>{{formatDate dueDate}}</h2>
-                    <div id="{{id}}" class="card">
+                    <div id="{{_id}}" class="card">
                         <div class="status-button">
                             <button class="complete">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="11" viewBox="0 0 15 11">
@@ -75,11 +72,11 @@
                             </div>
                             <div class="description" style="display: block;">
                                 <p>{{description}}</p>
-                                <p>{{importance}}</p>
+                                <p>importance: {{importance}} / isCompleted: {{isCompleted}}</p>
                             </div>
                         </div>
                         <div class="action-button">
-                            <a href="edit.html#{{id}}" class="edit">
+                            <a href="edit.html#{{_id}}" class="edit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                                     <path class="fill" d="M22.90625,2.96875 C21.859286,2.96875 20.813178,3.3743215 20,4.1875 L4.40625,19.78125 L4.1875,20 L4.125,20.3125 L3.03125,25.8125 L2.71875,27.28125 L4.1875,26.96875 L9.6875,25.875 L10,25.8125 L10.21875,25.59375 L25.8125,10 C27.438857,8.373643 27.438857,5.813857 25.8125,4.1875 C24.999322,3.3743215 23.953214,2.96875 22.90625,2.96875 Z M22.90625,4.875 C23.409286,4.875 23.919428,5.1069285 24.40625,5.59375 C25.379893,6.567393 25.379893,7.620107 24.40625,8.59375 L23.6875,9.28125 L20.71875,6.3125 L21.40625,5.59375 C21.893072,5.1069285 22.403214,4.875 22.90625,4.875 Z M19.3125,7.71875 L22.28125,10.6875 L10.1875,22.78125 C9.533142,21.500659 8.4993415,20.466858 7.21875,19.8125 L19.3125,7.71875 Z M5.9375,21.4375 C7.1365842,21.923393 8.0766067,22.863416 8.5625,24.0625 L5.28125,24.71875 L5.9375,21.4375 Z"/>
                                 </svg>
@@ -101,11 +98,11 @@
                 <div id="completed" class="tab-section"></div>
                 <!-- Render Todos marked as Completed -->
                 <template id="completed-template">
-                    {{#each this}}
+                    {{#each todos}}
 
                     {{#if isCompleted}}
                     <h2>{{formatDate dueDate}}</h2>
-                    <div id ="{{id}}" class="card">
+                    <div id ="{{_id}}" class="card">
                         <div class="status-button">
                             <button class="complete">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="11" viewBox="0 0 15 11">
@@ -143,9 +140,14 @@
             CAS FEE Projekt 1 - Milo
         </footer>
 
-        <script src="js/todos.js"></script>
-        <script src="js/handlebars.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/ui.js"></script>
+        <script src="../js/plugins/jquery-3.2.1.min.js"></script>
+        <script src="../js/plugins/handlebars-v4.0.10.js"></script>
+        <script src="../js/plugins/moment-with-locales.min.js"></script>
+
+        <script src="../js/handlebars.js"></script>
+        <script src="../js/services/restClient.js"></script>
+        <script src="../js/controllers/indexController.js"></script>
+        <script src="../js/ui.js"></script>
+
     </body>
 </html>

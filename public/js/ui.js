@@ -1,5 +1,4 @@
 "use strict";
-
 (function() {
 
     // Style Switch

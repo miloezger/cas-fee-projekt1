@@ -3,24 +3,24 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Notiz bearbeiten</title>
+        <title>Neue Notiz</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="icon" type="image/png" href="../favicon.png">
 
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="../css/main.css">
     </head>
     <body>
         <header class="header" role="banner">
-            <h1>Notiz bearbeiten</h1>
+            <h1>Neue Notiz</h1>
         </header>
         <div class="content">
             <main class="main" role="main">
                 <div class="form">
                     <div>
                         <label for="title">Titel</label>
-                        <input type="text" name="title" id="title" placeholder="Notiz eingeben" value="" required>
+                        <input type="text" name="title" id="title" placeholder="Notiz eingeben" value="" autofocus required>
                     </div>
                     <div>
                         <label for="description">Beschreibung</label>
@@ -43,14 +43,19 @@
                         </div>
                     </div>
                     <div>
-                        <button id="update" class="submit">Speichern</button>
+                        <button id="addnew" class="submit">Hinzufügen</button>
                         <a href="index.html" class="cancel">Abbrechen</a>
                     </div>
                 </div>
             </main>
         </div>
 
-        <script src="js/todos.js"></script>
-        <script src="js/edit.js"></script>
+        <script src="../js/plugins/jquery-3.2.1.min.js"></script>
+        <script src="../js/plugins/handlebars-v4.0.10.js"></script>
+        <script src="../js/plugins/moment-with-locales.min.js"></script>
+
+        <script src="../js/services/restClient.js"></script>
+        <script src="../js/controllers/addController.js"></script>
+
     </body>
 </html>

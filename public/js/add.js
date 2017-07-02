@@ -6,6 +6,7 @@ document.getElementById("due-date").valueAsDate = new Date();
 // Send Form
 document.getElementById("addnew").addEventListener('click', function(e) {
     createNote();
+    e.preventDefault();
 });
 
 

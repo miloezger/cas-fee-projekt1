@@ -11,7 +11,6 @@ moment.updateLocale('de', {
 });
 
 
-
 // Date Format Helper
 Handlebars.registerHelper ("formatDate", function(datetime) {
     if (moment) {

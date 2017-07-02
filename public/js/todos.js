@@ -19,11 +19,13 @@ let todoList = (function () {
     // Get all Notes
     function getAllTodos(sortBy = 'dueDate') {
         const todos = todoStorage.getStorage();
+
         if (sortBy === 'importance') {
             sortTodoByImportance(todos);
         } else if (sortBy === 'dueDate') {
             sortTodoByDate(todos);
         }
+
         return todos;
     }
 
