@@ -6,8 +6,8 @@ router.get("/", todos.getTodos);
 router.post("/", todos.addTodo);
 router.get("/:id", todos.getTodo);
 router.put("/:id/", todos.completeTodo);
-router.delete("/:id/", todos.deleteTodo);
-router.put("/:id/", todos.updateTodo);
+router.post("/delete/:id/", todos.deleteTodo);
+router.post("/:id/", todos.updateTodo);
 
 // router.post("/add/", todos.addTodo);
 

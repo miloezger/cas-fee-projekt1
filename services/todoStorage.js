@@ -30,8 +30,8 @@ function publicAddNewTodo(title, description, importance, dueDate, callback) {
 // Update
 function publicUpdateTodo(id, title, description, importance, dueDate, isCompleted, callback) {
 
-    db.update({ _id: id}, {$set: { title: title, description: description, importance: importance, dueDate: dueDate, isCompleted: isCompleted}}, {}, function (err, count) {
-        publicGetTodoById(id, callback);
+    db.update({ _id: id}, {$set: { title: title, description: description, importance: importance, dueDate: dueDate, isCompleted: isCompleted }}, {}, function (err, count) {
+        callback(err, count);
     });
 }
 
@@ -60,9 +60,9 @@ function publicChangeTodoStatus(id, status, callback) {
 }
 
 // Delete
-function publicDeleteTodo(id) {
+function publicDeleteTodo(id, callback) {
     db.remove({ _id: id }, {}, function (err, numRemoved) {
-        // numRemoved = 1
+        callback(err, numRemoved);
     });
 }
 

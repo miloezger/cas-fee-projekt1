@@ -28,7 +28,7 @@
                 });
             } else if (sortBy === 'dueDate') {
                 todos.sort(function (a, b) {
-                    return new Date(b.dueDate) - new Date(a.dueDate);
+                    return new Date(a.dueDate) - new Date(b.dueDate);
                 });
             }
 
@@ -57,7 +57,6 @@
             deleteButton.item(i).addEventListener('click', function(e) {
 
                 let currentId = this.parentNode.parentNode.id;
-                console.log('delete ' + currentId);
                 deleteItem(currentId);
 
             });
@@ -65,6 +64,7 @@
     }
     // Delete Item
     function deleteItem(id) {
+        // console.log('remove ' + id);
         client.deleteTodo(id);
         renderTodoList();
     }

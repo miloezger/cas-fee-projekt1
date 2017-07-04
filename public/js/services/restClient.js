@@ -15,14 +15,21 @@
     }
 
 
-    function updateTodo(id, title, description, importance, dueDate) {
+    function updateTodo(id, title, description, importance, dueDate, isCompleted) {
+        const data = JSON.stringify({title, description, importance, dueDate, isCompleted});
+
+        console.log(data);
+
         return $.ajax({
             dataType: "json",
             contentType: "application/json",
-            method: "PUT",
+            method: "POST",
             url: "/todos/" + id,
-            data: JSON.stringify({title, description, importance, dueDate}),
+            data: data,
             error: function(result) {
+                console.log(result);
+            },
+            success: function(result) {
                 console.log(result);
             }
         });
@@ -35,7 +42,7 @@
             contentType: "application/json",
             method: "GET",
             url: "/todos/",
-            data: JSON.stringify({sortBy}),
+            data: {sortBy},
             error: function(result) {
                 console.log(result);
             }
@@ -75,10 +82,13 @@
         return $.ajax({
             dataType: "json",
             contentType: "application/json",
-            method: "GET",
-            url: "/todos/" + id,
+            method: "POST",
+            url: "/todos/delete/" + id,
             data: undefined,
             error: function(result) {
+                console.log(result);
+            },
+            success: function(result) {
                 console.log(result);
             }
         });

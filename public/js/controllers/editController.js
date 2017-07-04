@@ -13,8 +13,8 @@
 
     rest.getTodo(currentId).done(function(todo) {
 
-        console.log(todo.isCompleted);
-        console.log(currentId);
+        // console.log(todo.isCompleted);
+        // console.log(currentId);
 
         // Prefill Form
         titleField.value = todo.title;
@@ -43,10 +43,11 @@
             let description = document.getElementById("description").value;
             let importance = document.getElementById("importance").value;
             let dueDate = document.getElementById("due-date").value;
-            let isCompleted = document.getElementById("status").value;
+            let isCompleted = (document.getElementById("status").value === "true");
 
             rest.updateTodo(currentId, title, description, importance, dueDate, isCompleted);
             window.location.replace("index.html");
+
         }
     }
 
